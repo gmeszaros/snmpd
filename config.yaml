@@ -1,0 +1,48 @@
+---
+options:
+  acl_config:
+    default: ""
+    description: "Multi-line string that contains ACL's, will be copied directly into the snmpd.conf"
+    type: string
+  extra_packages:
+    default: snmpd
+    description: |
+        Space separated list of extra deb packages to install.
+        Examples:
+          "snmp,libsnmp-dev"
+    type: string
+  install_keys:
+    default: ""
+    description: |
+        YAML list of GPG keys for installation sources, as a string. For apt repository
+        URLs, use the public key ID used to verify package signatures. For
+        other sources such as PPA, use empty string. This list must have the
+        same number of elements as install_sources, even if the key items are
+        all empty string. An example to go with the above for install_sources:
+          install_keys: |
+           - ""
+           - ""
+    type: string
+  install_sources:
+    default: ""
+    description: |
+        YAML list of additional installation sources, as a string. The number of
+        install_sources must match the number of install_keys. For example:
+          install_sources: |
+           - ppa:project1/ppa
+           - ppa:project2/ppa
+    type: string
+  other_config:
+    default: ""
+    description: "Multi-line string containing other valid snmpd.conf statements that are appended to the snmpd.conf"
+    type: string
+  sysContact:
+    default: "Your Name <your@email.address>"
+    description: |
+        The textual identification of the contact person for this managed node,
+        together with information on how to contact this person."
+    type: string
+  sysLocation:
+    default: Desk
+    description: "The physical location of this node (e.g., 'telephone closet, 3rd floor')."
+    type: string

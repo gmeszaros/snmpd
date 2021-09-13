@@ -1,0 +1,21 @@
+name: snmpd
+summary: SNMP (Simple Network Management Protocol) daemon
+maintainer: >-
+  Sreekrishnan P <sreekrishnan.p@bt.com>, open-charmers
+  <open-charmers@lists.launchpad.net>
+description: |
+   snmpd is an SNMP agent which binds to a port and awaits requests from SNMP management software.
+   Upon receiving a request, it processes the request(s), collects the requested information and/or
+   performs the requested operation(s) and returns the information to the sender.
+tags:
+  - monitoring
+  - network
+series:
+  - xenial
+  - bionic
+  - focal
+subordinate: true
+requires:
+  host:
+    interface: juju-info
+    scope: container
