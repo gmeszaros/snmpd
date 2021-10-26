@@ -1,0 +1,9 @@
+#!/usr/local/sbin/charm-env python3
+"""Return the stored pass phrase."""
+import yaml
+from charmhelpers.core import hookenv, unitdata
+
+config = hookenv.config()
+yaml_data = yaml.safe_load(config["snmpv3_pass_phrase"] or unitdata.kv().get("snmpv3_pass_phrase"))
+auth_pass_phrase = yaml_data.get('auth_pass_phrase')
+hookenv.action_set({"auth-pass-phrase": auth_pass_phrase})

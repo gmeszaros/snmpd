@@ -1,0 +1,6 @@
+"show-auth-pass-phrase":
+  "description": |
+    Retrieves authentication pass phrases (MD5|SHA).
+"show-priv-pass-phrase":
+  "description": |
+    Retrieves private pass phrases (AES/DES).

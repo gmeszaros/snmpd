@@ -9,7 +9,7 @@ options:
     description: |
         Space separated list of extra deb packages to install.
         Examples:
-          "snmp,libsnmp-dev"
+          "package1,package2"
     type: string
   install_keys:
     default: ""
@@ -45,4 +45,26 @@ options:
   sysLocation:
     default: Desk
     description: "The physical location of this node (e.g., 'telephone closet, 3rd floor')."
+    type: string
+  snmpv3_pass_phrase:
+    default: |
+      ---
+      auth_pass_phrase: "auth_password"
+      priv_pass_phrase: "priv_password"
+    description: |
+      Define the default authentication and privacy pass phrases to use for SNMPv3 requests.
+      example (using include-file):
+        snmpv3_pass_phrase: include-file://snmpd_pass_phrase.yaml
+    type: string
+  auth_protocol:
+    default: "MD5"
+    description: "Authentication protocol to use for SNMPv3 request (MD5|SHA)"
+    type: string
+  priv_protocol:
+    default: "AES"
+    description: "Privacy protocol to use for SNMPv3 request (DES|AES)"
+    type: string
+  security_name:
+    default: "snmppoller"
+    description: "Defines the default security name to use for SNMPv3 requests."
     type: string

@@ -3,4 +3,3 @@ ignore: ['.*.swp' ]
 options:
   basic:
     use_venv: true
-repo: https://github.com/psreekrishnan/snmpd
