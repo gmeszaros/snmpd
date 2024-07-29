@@ -10,9 +10,9 @@ tags:
   - monitoring
   - network
 series:
-  - xenial
   - bionic
   - focal
+  - jammy
 subordinate: true
 requires:
   host:
