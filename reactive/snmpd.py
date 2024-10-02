@@ -25,6 +25,7 @@ def install_snmpd():
 @when('config.changed')
 def start_snmpd():
     update_snmpd_conf()
+    disable_snmp_v1_v2()
     if not host.service_running('snmpd'):
         hookenv.log('Starting snmpd...')
         host.service_start('snmpd')
@@ -125,3 +126,16 @@ def uninstall_packages():
     #     packages += [p.strip() for p in kv.get('extra_packages').split(',')]
     hookenv.log("Uninstalling.. " + str([pkg for pkg in packages]), hookenv.INFO)
     fetch.apt_purge(packages)
+
+def disable_snmp_v1_v2():
+    """Disable SNMP v1 and v2 in the snmpd configuration."""
+    run_cmd(f"sed -i '/^rocommunity/d' {SNMPD_CONF}", b_shell=True)
+    run_cmd(f"sed -i '/^rwcommunity/d' {SNMPD_CONF}", b_shell=True)
+    hookenv.log('Disabled SNMP v1 and v2 in snmpd configuration')
+
+
+@hook('update_status')
+def check_snmpd_service():
+    if not host.service_running(SNMPD_SERVICE):
+        hookenv.status_set('blocked', 'snmpd service is not running')
+        hookenv.log("snmpd service not in running state.Blocking the unit on juju")
