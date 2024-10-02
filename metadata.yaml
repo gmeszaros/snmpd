@@ -1,4 +1,4 @@
-name: snmpd
+name: bt-charmers-snmpd
 summary: SNMP (Simple Network Management Protocol) daemon
 maintainer: >-
   Sreekrishnan P <sreekrishnan.p@bt.com>
